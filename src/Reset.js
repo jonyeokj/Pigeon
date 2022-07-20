@@ -12,7 +12,7 @@ function Reset() {
 
   useEffect(() => {
     if (loading) return;
-    if (user) navigate("/dashboard");
+    if (user) navigate("/Pigeon/dashboard");
   }, [user, loading]);
 
   return (
@@ -30,7 +30,7 @@ function Reset() {
         </button>
 
         <div>
-          Don't have an account? <Link to="/register">Register</Link> now.
+          Don't have an account? <Link to="/Pigeon/register">Register</Link> now.
         </div>
       </div>
     </div>

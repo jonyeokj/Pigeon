@@ -8,7 +8,7 @@ const Teaching = () => {
   return (
     <div className="text">
       <div>Teaching</div>
-      <button onClick={() => navigate("/Dashboard")}> Back</button>
+      <button onClick={() => navigate("/Pigeon/Dashboard")}> Back</button>
     </div>
   );
 };

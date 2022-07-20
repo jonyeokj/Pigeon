@@ -16,16 +16,16 @@ function App() {
     <div className="app">
       <Router>
         <Routes>
-          <Route exact path="/" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route exact path="/reset" element={<Reset />} />
-          <Route exact path="/dashboard" element={<Dashboard />} />
-          <Route exact path="/announcements" element={<Announcements />} />
-          <Route exact path="/checklist" element={<Checklist />} />
-          <Route exact path="/coocoo" element={<Coocoo />} />
-          <Route exact path="/teaching" element={<Teaching />} />
-          <Route exact path="/timetable" element={<Timetable />} />
-          <Route exact path="/user" element={<User />} />
+          <Route exact path="/Pigeon" element={<Login />} />
+          <Route exact path="/Pigeon/register" element={<Register />} />
+          <Route exact path="/Pigeon/reset" element={<Reset />} />
+          <Route exact path="/Pigeon/dashboard" element={<Dashboard />} />
+          <Route exact path="/Pigeon/announcements" element={<Announcements />} />
+          <Route exact path="/Pigeon/checklist" element={<Checklist />} />
+          <Route exact path="/Pigeon/coocoo" element={<Coocoo />} />
+          <Route exact path="/Pigeon/teaching" element={<Teaching />} />
+          <Route exact path="/Pigeon/timetable" element={<Timetable />} />
+          <Route exact path="/Pigeon/user" element={<User />} />
         </Routes>
       </Router>
     </div>

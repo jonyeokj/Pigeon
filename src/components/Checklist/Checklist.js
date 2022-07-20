@@ -8,7 +8,7 @@ const Checklist = () => {
   return (
     <div className="text">
       <div>Checklist</div>
-      <button onClick={() => navigate("/Dashboard")}> Back</button>
+      <button onClick={() => navigate("/Pigeon/Dashboard")}> Back</button>
     </div>
   );
 };

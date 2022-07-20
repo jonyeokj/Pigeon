@@ -38,12 +38,12 @@ function Dashboard() {
         <div>{user?.email}</div>
         <div>Menu:</div>
         <div></div>
-        <button onClick={() => navigate("/announcements")}>Announcements</button>
-        <button onClick={() => navigate("/checklist")}>Checklist</button>
-        <button onClick={() => navigate("/coocoo")}>Coocoo</button>
-        <button onClick={() => navigate("/teaching")}>Teaching</button>
-        <button onClick={() => navigate("/timetable")}>Timetable</button>
-        <button onClick={() => navigate("/user")}>User</button>
+        <button onClick={() => navigate("/Pigeon/announcements")}>Announcements</button>
+        <button onClick={() => navigate("/Pigeon/checklist")}>Checklist</button>
+        <button onClick={() => navigate("/Pigeon/coocoo")}>Coocoo</button>
+        <button onClick={() => navigate("/Pigeon/teaching")}>Teaching</button>
+        <button onClick={() => navigate("/Pigeon/timetable")}>Timetable</button>
+        <button onClick={() => navigate("/Pigeon/user")}>User</button>
         <button className="dashboard__btn" onClick={logout}>
           Logout
         </button>

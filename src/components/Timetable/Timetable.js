@@ -8,7 +8,7 @@ const Timetable = () => {
   return (
     <div className="text">
       <div>Timetable</div>
-      <button onClick={() => navigate("/Dashboard")}>Back</button>
+      <button onClick={() => navigate("/Pigeon/Dashboard")}>Back</button>
     </div>
   );
 };
