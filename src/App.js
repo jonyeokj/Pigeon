@@ -12,6 +12,7 @@ import Timetable from "./components/Timetable";
 import User from "./components/User";
 
 function App() {
+
   return (
     <div className="app">
       <Router>

@@ -26,7 +26,6 @@ function Dashboard() {
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/");
-
     fetchUserName();
   }, [user, loading]);
 

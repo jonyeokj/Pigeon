@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+
 import {
   GoogleAuthProvider,
   getAuth,
@@ -8,6 +9,7 @@ import {
   sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
+
 import {
   getFirestore,
   query,
@@ -45,6 +47,7 @@ const signInWithGoogle = async () => {
         name: user.displayName,
         authProvider: "google",
         email: user.email,
+        modules: ["cs1010", "cs2030", "cs2040"]
       });
     }
   } catch (err) {
@@ -71,6 +74,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       name,
       authProvider: "local",
       email,
+      modules: ["cs1010", "cs2030", "cs2040"]
     });
   } catch (err) {
     console.error(err);

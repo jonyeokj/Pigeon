@@ -2,3 +2,8 @@
   text-align: center;
   color: red;
 }
+
+.checklistWrapper {
+  display: flex;
+  flex-direction: column;
+}
