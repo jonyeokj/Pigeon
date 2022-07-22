@@ -4,17 +4,23 @@ import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
 import CheckCircleOutlineRoundedIcon from '@material-ui/icons/CheckCircleOutlineRounded';
 import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
 import { motion } from 'framer-motion';
+
 const Todo = ({ todo }) => {
-    const deleteTodo = () => {
-        const todoRef = db.database().ref('Todo').child(todo.id);
-        todoRef.remove();
+    function handleClick() {
+        console.log('clicked');
     }
-    const completeTodo = () => {
-        const todoRef = db.database().ref('Todo').child(todo.id);
-        todoRef.update({
-            complete: !todo.complete,
-        })
-    }
+    // const deletetask = () => {
+    //     // const checklistRef = db.ref('checklist').child(todo.id);
+    //     // checklistRef.remove();
+    //     console.log('task removed');
+    // }
+    // const completeTask = () => {
+    //     // const checklistRef = db.ref('checklist').child(todo.id);
+    //     // checklistRef.update({
+    //     //     complete: !todo.complete,
+    //     console.log('task completed');
+    //     }
+    // }
     return (
         <>
             <div
@@ -25,23 +31,23 @@ const Todo = ({ todo }) => {
                         todo.complete ?
                             <CheckCircleRoundedIcon
                                 className='icon'
-                                onClick={completeTodo}
+                                onClick={handleClick}
                                 fontSize='large'
                             /> :
                             <CheckCircleOutlineRoundedIcon
                                 className='icon'
-                                onClick={completeTodo}
+                                onClick={handleClick}
                                 fontSize='large'
                             />
                     }
-                    <div>
+                    <motion.div>
                         <HighlightOffRoundedIcon
                             className='icon'
-                            onClick={deleteTodo}
+                            onClick={handleClick}
                             fontSize='large'
                         />
-                    </div>
-                    <h5 className={todo.complete ? 'complete' : 'pending  '}>{todo.title}</h5>
+                    </motion.div>
+                    {/* <h5 className={todo.complete ? 'complete' : 'pending  '}>{todo.title}</h5> */}
                 </li>
             </div>
         </>

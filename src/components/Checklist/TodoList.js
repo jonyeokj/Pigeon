@@ -4,30 +4,25 @@ import { db } from '../../firebase'
 import Todo from './Todo';
 
 const TodoList = () => {
-    const [todoList, setTodoList] = useState();
+    const [checkList, setCheckList] = useState();
+
     useEffect(() => {
-        const todoRef = db.database().ref('Todo');
-        todoRef.on('value', (snapshot) => {
+        db.checklist.on('value', (snapshot) => {
             const todos = snapshot.val();
-            const todoList = []
+            const checkList = []
             for (let id in todos) {
-                todoList.push({ id, ...todos[id] });
+                checkList.push({ id, ...todos[id] });
             }
-            setTodoList(todoList);
+            setCheckList(checkList);
         })
     }, [])
+
     return (
         <>
-            <h2>TodoList</h2>
-            <div
-                layout
-            >
-                {todoList ?
-                    todoList.map((todo, index) =>
-                        <Todo todo={todo} key={index} />
-                    )
-                    : ''}
-            </div>
+            <h2>CheckList</h2>
+            <motion.div layout>
+                { checkList.map((todo, index) => <Todo todo={todo} key={index} /> )}
+            </motion.div>
         </>
     );
 }
