@@ -9,14 +9,7 @@ const Checklist = () => {
   const navigate = useNavigate();
 
   return (
-    <>
-        <motion.div className='todoapp'>
-            <h1>Todo App</h1>
-            <Form />
-            <TodoList />
-        </motion.div>
-        <button onClick={() => navigate("/Pigeon/Dashboard")}>Back</button>
-    </>
+    <button onClick={() => navigate("/Pigeon/Dashboard")}>Back</button>
   );
 }
 
