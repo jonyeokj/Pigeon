@@ -4,7 +4,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../firebase";
 import { useEffect, useState } from "react";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import Collapsible from "react-collapsible";
 import TodoApp from './TodoApp';
 
 const Checklist = () => {
@@ -33,11 +32,12 @@ const Checklist = () => {
   }, [user, loading]);
 
   return (
-    <>
+    <div>
       <div className='app'>
         <TodoApp />
       </div>
-    </>
+      <button onClick={() => navigate("/Pigeon/Dashboard")}>Back</button>
+    </div>
   );
 }
 

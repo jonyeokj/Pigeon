@@ -26,14 +26,14 @@ const Timetable = () => {
   }, [user, loading]);
 
   return (
-    <div className='timetable'>
-      <h1 style={{position: 'relative', left: 850, top: 20}}> Timetable </h1>
+    <div className='text'>
+      <h1> Timetable </h1>
       <center>
-        <div>
+        <div classname='window'>
           <iframe src="https://nusmods.com/timetable/sem-1" scrolling='no' style={{height: 550, width: 1100}}></iframe>
         </div>
       </center>
-      <div style={{position: 'relative', left: 900, top: 50}}>
+      <div>
         <button onClick={() => navigate("/Pigeon/Dashboard")}>Back</button>
       </div> 
     </div> 
