@@ -1,20 +1,42 @@
 import React from 'react';
 import "./Timetable.css";
 import { useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db } from "../../firebase";
+import { useEffect } from "react";
+import { query, collection, getDocs, where } from "firebase/firestore";
 
 const Timetable = () => {
   const navigate = useNavigate();
+  const [user, loading, error] = useAuthState(auth);
+
+  const checkAuth = async () => {
+    try {
+      const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+    } catch (err) {
+      console.error(err);
+      alert("An error occured while fetching user data");
+    }
+  }
+
+  useEffect(() => {
+    if (loading) return;
+    if (!user) return navigate("/Pigeon");
+    checkAuth();
+  }, [user, loading]);
 
   return (
     <div className='timetable'>
-      <h1 style={{position: 'relative', left: 900, top: 100}}> Timetable </h1>
-      <div style={{position: 'relative', left: 450, top: 150, width: 1000, height: 500, overflow: 'hidden'}}>
-        <iframe src="https://nusmods.com/timetable/sem-1" scrolling='no' style={{height: 1000, width: 1000}}></iframe>
-      </div>
-      <div style={{position: 'relative', left: 950, top: 200}}>
+      <h1 style={{position: 'relative', left: 850, top: 20}}> Timetable </h1>
+      <center>
+        <div>
+          <iframe src="https://nusmods.com/timetable/sem-1" scrolling='no' style={{height: 550, width: 1100}}></iframe>
+        </div>
+      </center>
+      <div style={{position: 'relative', left: 900, top: 50}}>
         <button onClick={() => navigate("/Pigeon/Dashboard")}>Back</button>
-      </div>
-    </div>
+      </div> 
+    </div> 
   );
 };
 

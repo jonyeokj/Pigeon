@@ -19,7 +19,7 @@ const TodoList = () => {
     return (
         <>
             <h2>TodoList</h2>
-            <motion.div
+            <div
                 layout
             >
                 {todoList ?
@@ -27,7 +27,7 @@ const TodoList = () => {
                         <Todo todo={todo} key={index} />
                     )
                     : ''}
-            </motion.div>
+            </div>
         </>
     );
 }

@@ -34,13 +34,13 @@ const Todo = ({ todo }) => {
                                 fontSize='large'
                             />
                     }
-                    <motion.div>
+                    <div>
                         <HighlightOffRoundedIcon
                             className='icon'
                             onClick={deleteTodo}
                             fontSize='large'
                         />
-                    </motion.div>
+                    </div>
                     <h5 className={todo.complete ? 'complete' : 'pending  '}>{todo.title}</h5>
                 </li>
             </div>
