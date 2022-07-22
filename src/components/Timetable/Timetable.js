@@ -13,6 +13,7 @@ const Timetable = () => {
   const checkAuth = async () => {
     try {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
