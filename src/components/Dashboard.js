@@ -40,7 +40,6 @@ function Dashboard() {
         <button onClick={() => navigate("/Pigeon/announcements")}>Announcements</button>
         <button onClick={() => navigate("/Pigeon/checklist")}>Checklist</button>
         <button onClick={() => navigate("/Pigeon/coocoo")}>Coocoo</button>
-        <button onClick={() => navigate("/Pigeon/teaching")}>Teaching</button>
         <button onClick={() => navigate("/Pigeon/timetable")}>Timetable</button>
         <button onClick={() => navigate("/Pigeon/professor")}>Professor</button>
         <button className="dashboard__btn" onClick={logout}>
