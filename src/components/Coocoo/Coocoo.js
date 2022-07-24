@@ -57,10 +57,10 @@ const Coocoo = () => {
     <div className="text">
       <div>Coocoo</div>
       {mods.map((mod, idx) => (
-        <Collapsible trigger={mod}>
+        <Collapsible trigger={mod} className="modItem">
           {Object.keys(links[idx]).map((key) => (
             <div>
-              <a href={`${links[idx][key]}`} rel="noreferrer">
+              <a href={`https://${links[idx][key]}`} rel="noreferrer">
                 {`${key}`}
               </a>
             </div>
