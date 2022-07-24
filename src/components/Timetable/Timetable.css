@@ -2,3 +2,9 @@
   text-align: center;
   color: red;
 }
+
+.window {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
