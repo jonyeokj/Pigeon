@@ -1,4 +1,16 @@
 .text {
-  text-align: center;
   color: red;
+  text-align: center;
 }
+
+.modItem {
+  background-color: aquamarine;
+  font-size: 30px;
+  width: 200px;
+  height: 300px;
+  
+}
+/* 
+.modItem.div {
+  
+} */
