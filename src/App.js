@@ -9,7 +9,7 @@ import Checklist from "./components/Checklist";
 import Coocoo from "./components/Coocoo";
 import Teaching from "./components/Teaching";
 import Timetable from "./components/Timetable";
-import User from "./components/User";
+import Professor from "./components/Professor";
 
 function App() {
 
@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/Pigeon/coocoo" element={<Coocoo />} />
           <Route exact path="/Pigeon/teaching" element={<Teaching />} />
           <Route exact path="/Pigeon/timetable" element={<Timetable />} />
-          <Route exact path="/Pigeon/user" element={<User />} />
+          <Route exact path="/Pigeon/professor" element={<Professor />} />
         </Routes>
       </Router>
     </div>

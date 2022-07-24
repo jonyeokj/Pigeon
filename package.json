@@ -4,15 +4,18 @@
   "private": true,
   "homepage": "https://jonyeokj.github.io/Pigeon",
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "bootstrap": "^5.2.0",
     "firebase": "^9.9.0",
     "react": "^17.0.2",
+    "react-awesome-modal": "^2.0.5",
     "react-collapsible": "^2.10.0",
     "react-dom": "^17.0.2",
     "react-firebase-hooks": "^4.0.2",
+    "react-hooks-use-modal": "^2.1.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"

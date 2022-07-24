@@ -5,8 +5,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import Collapsible from "react-collapsible";
+import { useModal } from 'react-hooks-use-modal';
 
 const Announcements = () => {
+  
   const [user, loading, error] = useAuthState(auth);
   const [tempMods, setTempMods] = useState([]);
   const [announcements, setAnnouncements] = useState([]);
