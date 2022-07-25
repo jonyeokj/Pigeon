@@ -1,6 +1,11 @@
 .background {
-  width: 100vw;
+  background-color: #001233;
   height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
@@ -12,4 +17,17 @@
   display: flex;
   align-items: center;
   justify-content: center
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.hyperlink {
+  font-size: medium;
+  color: white;
+  margin: 10px;
 }

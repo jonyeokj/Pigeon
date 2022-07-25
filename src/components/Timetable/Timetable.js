@@ -33,11 +33,12 @@ const Timetable = () => {
         <h1> Timetable </h1>
         <center>
           <div className='window'>
-            <iframe src="https://nusmods.com/timetable/sem-1" scrolling='no' style={{height: 550, width: 1100}}></iframe>
+            <iframe src="https://nusmods.com/timetable/sem-1" scrolling='no' style={{height: 500, width: 1100}}></iframe>
           </div>
         </center>
-        <div>
-        <Button className="backButton" variant="contained" color="primary" onClick={() => navigate("/Pigeon/Dashboard")}> Back</Button>
+        <div className='buttons'>   
+          <a href="https://nusmods.com/timetable/sem-1" className='hyperlink'>Edit Timetable</a>
+          <Button className="backButton" variant="contained" color="primary" onClick={() => navigate("/Pigeon/Dashboard")}> Back</Button>
         </div> 
       </div> 
     </div>

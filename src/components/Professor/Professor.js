@@ -256,10 +256,10 @@ const Professor = () => {
   }, [currMod]);
 
   return (
-    <div className="text">
-      <div>Professor</div>
+    <div className="background">
+      <div className="header">Professor</div>
 
-      <div>
+      <div className="title">
         List of Modules
         {mods.map(mod => 
           <div>{mod}</div>)}
@@ -283,8 +283,8 @@ const Professor = () => {
         ))}
       </div>
 
-      <div>
-        <div>
+      <div className="formWrap">
+        <div className="selectMod">
           {(currMod === '') ? ("Please Select a Module") : currMod}
         </div>
         <form>
@@ -299,7 +299,7 @@ const Professor = () => {
         </form>
         <button onClick={openAnn}>Add Announcement</button>
         <AnnModal>
-          <div>
+          <div className="announWrap">
             <form>
               <TextField label='Title' value={addAnnInputs.title || ""} name='title'
                 onChange={addAnnHandleChange} />
