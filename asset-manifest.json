@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Pigeon/static/css/main.84314f13.css",
-    "main.js": "/Pigeon/static/js/main.dc4fa13b.js",
+    "main.css": "/Pigeon/static/css/main.c64794bf.css",
+    "main.js": "/Pigeon/static/js/main.c5df8b9b.js",
     "static/js/787.27a2ab5e.chunk.js": "/Pigeon/static/js/787.27a2ab5e.chunk.js",
     "static/media/PigeonLogo.png": "/Pigeon/static/media/PigeonLogo.65ea99c14610c77c2ac9.png",
     "index.html": "/Pigeon/index.html",
-    "main.84314f13.css.map": "/Pigeon/static/css/main.84314f13.css.map",
-    "main.dc4fa13b.js.map": "/Pigeon/static/js/main.dc4fa13b.js.map",
+    "main.c64794bf.css.map": "/Pigeon/static/css/main.c64794bf.css.map",
+    "main.c5df8b9b.js.map": "/Pigeon/static/js/main.c5df8b9b.js.map",
     "787.27a2ab5e.chunk.js.map": "/Pigeon/static/js/787.27a2ab5e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.84314f13.css",
-    "static/js/main.dc4fa13b.js"
+    "static/css/main.c64794bf.css",
+    "static/js/main.c5df8b9b.js"
   ]
 }
