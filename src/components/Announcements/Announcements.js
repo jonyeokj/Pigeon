@@ -4,12 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import Collapsible from "react-collapsible";
-import { useModal } from "react-hooks-use-modal";
 import { Button } from "@material-ui/core";
 
 const Announcements = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [tempMods, setTempMods] = useState([]);
   const [announcements, setAnnouncements] = useState([]);
   const [mods, setModules] = useState([]);
@@ -38,10 +36,7 @@ const Announcements = () => {
         (announcements) => announcements.data().announcements
       );
 
-      console.log(modList, announcementList);
-
       setModules(modList);
-      console.log("ann", mods);
       setAnnouncements(announcementList);
       setDataLoaded(true);
     } catch (err) {

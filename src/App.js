@@ -18,14 +18,14 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/Pigeon" element={<Login />} />
-          <Route exact path="/Pigeon/register" element={<Register />} />
-          <Route exact path="/Pigeon/reset" element={<Reset />} />
-          <Route exact path="/Pigeon/dashboard" element={<Dashboard />} />
-          <Route exact path="/Pigeon/announcements" element={<Announcements />} />
-          <Route exact path="/Pigeon/checklist" element={<Checklist />} />
-          <Route exact path="/Pigeon/coocoo" element={<Coocoo />} />
-          <Route exact path="/Pigeon/timetable" element={<Timetable />} />
-          <Route exact path="/Pigeon/professor" element={<Professor />} />
+          <Route exact path="/Pigeon/Register" element={<Register />} />
+          <Route exact path="/Pigeon/Reset" element={<Reset />} />
+          <Route exact path="/Pigeon/Dashboard" element={<Dashboard />} />
+          <Route exact path="/Pigeon/Announcements" element={<Announcements />} />
+          <Route exact path="/Pigeon/Checklist" element={<Checklist />} />
+          <Route exact path="/Pigeon/Coocoo" element={<Coocoo />} />
+          <Route exact path="/Pigeon/Timetable" element={<Timetable />} />
+          <Route exact path="/Pigeon/Professor" element={<Professor />} />
         </Routes>
       </Router>
     </div>

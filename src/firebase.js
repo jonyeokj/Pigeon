@@ -47,7 +47,8 @@ const signInWithGoogle = async () => {
         name: user.displayName,
         authProvider: "google",
         email: user.email,
-        modules: ["cs1010", "cs2030", "cs2040"]
+        modules: ["cs1010", "cs2030", "cs2040"],
+        isProf: false
       });
     }
   } catch (err) {
@@ -74,7 +75,8 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       name,
       authProvider: "local",
       email,
-      modules: ["cs1010", "cs2030", "cs2040"]
+      modules: ["cs1010", "cs2030", "cs2040"],
+      isProf: false
     });
   } catch (err) {
     console.error(err);

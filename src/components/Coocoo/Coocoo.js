@@ -5,6 +5,11 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import Collapsible from "react-collapsible";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const Coocoo = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -54,18 +59,29 @@ const Coocoo = () => {
   }, [tempMods]);
 
   return (
-    <div className="text">
-      <div>Coocoo</div>
+    <div className="wrapper">
+      <div className="coocooTitle">Coocoo</div>
       {mods.map((mod, idx) => (
-        <Collapsible trigger={mod} className="modItem">
-          {Object.keys(links[idx]).map((key) => (
-            <div>
-              <a href={`https://${links[idx][key]}`} rel="noreferrer">
-                {`${key}`}
-              </a>
-            </div>
-          ))}
-        </Collapsible>
+        <Accordion className="modItem">
+          <AccordionSummary
+            className="name"
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography>{mod}</Typography>
+          </AccordionSummary>
+          <AccordionDetails
+            className="link">
+            {Object.keys(links[idx]).map((key) => (
+              <Typography>
+                <a href={`https://${links[idx][key]}`} rel="noreferrer">
+                  {`${key}`}
+                </a>
+              </Typography>
+            ))}
+          </AccordionDetails>
+        </Accordion>
       ))}
       <button onClick={() => navigate("/Pigeon/Dashboard")}> Back</button>
     </div>

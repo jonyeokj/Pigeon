@@ -8,6 +8,7 @@ import { query, collection, getDocs, where } from "firebase/firestore";
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
+  const [isProf, setProf] = useState(false);
   const navigate = useNavigate();
 
   const fetchUserName = async () => {
@@ -17,6 +18,7 @@ function Dashboard() {
       const data = doc.docs[0].data();
 
       setName(data.name);
+      setProf(data.isProf);
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
@@ -29,6 +31,8 @@ function Dashboard() {
     fetchUserName();
   }, [user, loading]);
 
+  console.log(isProf)
+
   return (
     <div className="dashboard">
       <div className="dashboard__container">
@@ -37,11 +41,11 @@ function Dashboard() {
         <div>{user?.email}</div>
         <div>Menu:</div>
         <div></div>
-        <button onClick={() => navigate("/Pigeon/announcements")}>Announcements</button>
-        <button onClick={() => navigate("/Pigeon/checklist")}>Checklist</button>
-        <button onClick={() => navigate("/Pigeon/coocoo")}>Coocoo</button>
-        <button onClick={() => navigate("/Pigeon/timetable")}>Timetable</button>
-        <button onClick={() => navigate("/Pigeon/professor")}>Professor</button>
+        <button onClick={() => navigate("/Pigeon/Announcements")}>Announcements</button>
+        <button onClick={() => navigate("/Pigeon/Checklist")}>Checklist</button>
+        <button onClick={() => navigate("/Pigeon/Coocoo")}>Coocoo</button>
+        <button onClick={() => navigate("/Pigeon/Timetable")}>Timetable</button>
+        {isProf && <button onClick={() => navigate("/Pigeon/Professor")}>Professor</button>}
         <button className="dashboard__btn" onClick={logout}>
           Logout
         </button>
