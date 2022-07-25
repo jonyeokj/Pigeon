@@ -1,99 +1,80 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { FaEarlybirds } from 'react-icons/fa';
-import { MdOutlineCancel } from 'react-icons/md';
-import { TooltipComponent } from '@syncfusion/ej2-react-popups';
-import { useStateContext } from '../contexts/ContextProvider';
-import { AiOutlineAlert, AiOutlineUpload } from 'react-icons/ai';
-import { VscChecklist, VscTable } from 'react-icons/vsc';
-import { FiLink } from 'react-icons/fi';
+import { useState, useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { AiOutlineMenu, AiFillHome } from "react-icons/ai";
+import { BsFillMegaphoneFill, BsListCheck, BsLink45Deg, BsTable } from "react-icons/bs";
+import { FaChalkboardTeacher, FaEarlybirds } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { auth, db, logout } from "../firebase";
+import { query, collection, getDocs, where } from "firebase/firestore";
+import { Menu, MenuItem, ProSidebar, SidebarHeader, SubMenu } from "react-pro-sidebar";
+import "react-pro-sidebar/dist/css/styles.css";
+import { Link } from "react-router-dom";
+
 
 const Sidebar = () => {
-  const { activeMenu, setActiveMenu } = useStateContext();
-  const currentColor = "#90E0EF";
-  const links = [
-    {
-        title: 'Functions',
-        links: [
-          {
-            name: 'Announcements',
-            icon: <AiOutlineAlert />,
-          },
-          {
-            name: 'Checklist',
-            icon: <VscChecklist />,
-          },
-          {
-            name: 'CooCoo',
-            icon: <FiLink />,
-          },
-          {
-            name: 'Timetable',
-            icon: <VscTable />,
-          },
-          {
-            name: 'Professor',
-            icon: <AiOutlineUpload />,
-          },
-        ],
-      }
-    ]
+  const [user, loading] = useAuthState(auth);
+  const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
+  const [isProf, setProf] = useState(false);
 
-  const handleCloseSideBar = () => {
-    if (activeMenu !== undefined) {
-      setActiveMenu(false);
+  const fetchProf = async () => {
+    try {
+      const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+      const doc = await getDocs(q);
+      const data = doc.docs[0].data();
+
+      setProf(data.isProf);
+    } catch (err) {
+      console.error(err);
+      alert("An error occured while fetching user data");
     }
   };
 
-  const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2';
-  const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2';
+  const styles = {
+    sideBarHeight: {
+      height: "100vh",
+    },
+    menuIcon: {
+      float: "right",
+      margin: "10px",
+    },
+  };
+
+  const onClickMenuIcon = () => {
+    setCollapsed(!collapsed);
+  };
+
+  useEffect(() => {
+    if (loading) return;
+    if (!user) return navigate("/Pigeon");
+    fetchProf();
+  }, [user, loading]);
 
   return (
-    <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10">
-      {activeMenu && (
-        <>
-          <div className="flex justify-between items-center">
-            <Link to="/" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900">
-              <FaEarlybirds /> <span>Pigeon</span>
-            </Link>
-            <TooltipComponent content="Menu" position="BottomCenter">
-              <button
-                type="button"
-                onClick={() => setActiveMenu(!activeMenu)}
-                style={{ color: currentColor }}
-                className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block"
-              >
-                <MdOutlineCancel />
-              </button>
-            </TooltipComponent>
-          </div>
-          <div className="mt-10 ">
-            {links.map((item) => (
-              <div key={item.title}>
-                <p className="text-gray-400 dark:text-gray-400 m-3 mt-4 uppercase">
-                  {item.title}
-                </p>
-                {item.links.map((link) => (
-                  <NavLink
-                    to={`/${link.name}`}
-                    key={link.name}
-                    onClick={handleCloseSideBar}
-                    style={({ isActive }) => ({
-                      backgroundColor: isActive ? currentColor : '',
-                    })}
-                    className={({ isActive }) => (isActive ? activeLink : normalLink)}
-                  >
-                    {link.icon}
-                    <span className="capitalize ">{link.name}</span>
-                  </NavLink>
-                ))}
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-    </div>
+    <ProSidebar style={styles.sideBarHeight} collapsed={collapsed}>
+      <SidebarHeader>
+        <div style={styles.menuIcon} onClick={onClickMenuIcon}>
+          <AiOutlineMenu />
+        </div>
+        <div className="Home" style={styles.menuIcon} 
+          onClick={() => navigate("/Pigeon/Dashboard")}>
+          <FaEarlybirds />
+          {collapsed ? '' : 'Pigeon'}
+        </div>
+      </SidebarHeader>
+      <Menu iconShape="square">
+        <MenuItem onClick={() => navigate("/Pigeon/Announcements")}
+          icon={<BsFillMegaphoneFill />}> Announcements</MenuItem>
+        <MenuItem onClick={() => navigate("/Pigeon/Checklist")}
+          icon={<BsListCheck />}> Checklist</MenuItem>
+        <MenuItem onClick={() => navigate("/Pigeon/Coocoo")}
+          icon={<BsLink45Deg />}> Coocoo</MenuItem>
+        <MenuItem onClick={() => navigate("/Pigeon/Timetable")}
+          icon={<BsTable />}> Timetable</MenuItem>
+        {isProf && <MenuItem onClick={() => navigate("/Pigeon/Professor")}
+          icon={<FaChalkboardTeacher />}> Professor</MenuItem>}
+      </Menu>
+    </ProSidebar>
   );
 };
-
 export default Sidebar;
