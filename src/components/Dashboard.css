@@ -1,13 +1,15 @@
 @import url("https://fonts.google.com/specimen/Nunito");
 
 .dashboard {
-  background-image: url("https://kiddieroundupcdc.com/wp-content/uploads/2016/06/blue-sky.jpg");
-  background-size: "cover";
+  /* background-image: url("https://kiddieroundupcdc.com/wp-content/uploads/2016/06/blue-sky.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center; */
+  background-color: #001233;
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -17,10 +19,26 @@
   flex-direction: column;
   text-align: center;
   border: 3px solid black;
-  background-color: #ffc6ff;
+  background-color: #002855;
   padding: 30px;
-  height: 50%;
   width: 50%;
+  border-radius: 12%;
+}
+
+.logginInfo {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: xx-large;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;;
+  justify-content: center;
 }
 
 .navButton {
@@ -31,9 +49,9 @@
   padding: 10px;
   font-size: 18px;
   margin-top: 10px;
-  border: 5px solid #758bfd;
-  color: black;
-  background-color: #e4ff1a;
+  border: 5px solid #168aad;
+  color: white;
+  background-color: #023E7D;
 }
 
 .dashboard__btn {
@@ -47,4 +65,115 @@
 
 .dashboard div {
   margin-top: 7px;
+}
+
+body {
+  background: #e4e4e4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin: 10px;
+  border-radius: 10px;
+  background: #0d1621;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 20px 20px 5px 20px;
+}
+
+.calendar {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 33px;
+  padding: 0 10px;
+  padding-top: 10px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.hour {
+  flex: 1;
+  font-size: 7rem;
+  margin: 0;
+  padding: 0;
+  top: 0;
+}
+
+.ampm {
+  align-self: flex-end;
+  font-size: 2.5rem;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.digital {
+  display: inline-block;
+  position: relative;
+  font-family: 'Digital-7';
+}
+
+.digital :first-child {
+  width: 100%;
+  position: absolute;
+  color: #242a32;
+}
+
+.digital :last-child {
+  position: relative;
+  color: #ebebeb;
+}
+
+.digital p {
+  margin: 0;
+}
+
+button {
+  font-size: 1.2rem;
+  border-radius:5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.fa {
+  margin-left: 15px;
+  font-size: 1.1rem;
+}
+
+.a {
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+@media (max-width: 770px) {
+
+  .calendar, .ampm {
+    font-size: 0.7rem;
+  }
+
+  .hour {
+    font-size: 4rem;
+  }
+
+  .clock {
+    padding: 5px;
+  }
+
+  .countdown {
+    font-size: 4rem;
+  }
+  
 }

@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../firebase";
 import { useEffect } from "react";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import { Button } from "@material-ui/core";
 
 const Timetable = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Timetable = () => {
 
   return (
     <div className='background'>
-      <div className='text'>
+      <div className='title'>
         <h1> Timetable </h1>
         <center>
           <div classname='window'>
@@ -36,7 +37,7 @@ const Timetable = () => {
           </div>
         </center>
         <div>
-          <button onClick={() => navigate("/Pigeon/Dashboard")}>Back</button>
+        <Button className="backButton" variant="contained" color="primary" onClick={() => navigate("/Pigeon/Dashboard")}> Back</Button>
         </div> 
       </div> 
     </div>

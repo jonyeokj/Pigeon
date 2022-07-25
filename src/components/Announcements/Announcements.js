@@ -58,28 +58,30 @@ const Announcements = () => {
   }, [tempMods]);
 
   return (
-    <div className="wrapper">
-      {dataLoaded ? (
-        <>
-          <div className="announcementTitle">Announcements</div>
-          <div className="announcementList">
-            {mods.map((mod, idx) => (
-              <div className="modBar">
-                <p className="modBarHeader">{mod}</p>
-                {Object.keys(announcements[idx]).map((key) => (
-                  <div className="announcementItem">
-                    <h3 className="announcementItemHeader">{`${key}`}</h3>
-                    <div className="announcementItemDes">{`${announcements[idx][key]}`}</div>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-          <Button className="backButton" variant="contained" color="primary" onClick={() => navigate("/Pigeon/Dashboard")}> Back</Button>
-        </>
-      ) : (
-        <div>Loading</div>
-      )}
+    <div className="background">
+      <div className="wrapper">
+        {dataLoaded ? (
+          <>
+            <div className="announcementTitle">Announcements</div>
+            <div className="announcementList">
+              {mods.map((mod, idx) => (
+                <div className="modBar">
+                  <p className="modBarHeader">{mod}</p>
+                  {Object.keys(announcements[idx]).map((key) => (
+                    <div className="announcementItem">
+                      <h3 className="announcementItemHeader">{`${key}`}</h3>
+                      <div className="announcementItemDes">{`${announcements[idx][key]}`}</div>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <Button className="backButton" variant="contained" color="primary" onClick={() => navigate("/Pigeon/Dashboard")}> Back</Button>
+          </>
+        ) : (
+          <div>Loading</div>
+        )}
+      </div>
     </div>
   );
 };

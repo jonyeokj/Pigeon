@@ -31,6 +31,7 @@ const Checklist = () => {
       addDoc(collection(db,'tasks'),{
       task:input,
       timestamp: serverTimestamp(),
+      completed: false,
       uid: user?.uid
       })
     setInput('')
@@ -42,7 +43,7 @@ const Checklist = () => {
       <div className="checklist_wrapper">
         <h2 className="title"> Checklist </h2>
         <form>
-          <TextField className="input" id='outlined-basic' label='make Checklist' variant='outlined'
+          <TextField className="input" id='outlined-basic' label='Task' variant='outlined'
           style={{margin:'0px 5px'}} size='small' value={input} 
           onChange={e=>setInput(e.target.value)} />
           <Button variant='contained' color='primary' onClick={addTask} >

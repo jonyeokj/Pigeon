@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import { auth, db, logout } from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import { Clock } from './Clock/Clock';
 
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
@@ -15,6 +16,7 @@ function Dashboard() {
     try {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
       const doc = await getDocs(q);
+      console.log(doc.docs);
       const data = doc.docs[0].data();
 
       setName(data.name);
@@ -35,20 +37,21 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <div className="dashboard__container">
-        Logged in as
+      <Clock />
+      <div className="logginInfo">
+        Welcome!
         <div>{name}</div>
-        <div>{user?.email}</div>
-        <div>Menu:</div>
+      </div>
+      <div className="dashboard__container">
         <div></div>
-        <button onClick={() => navigate("/Pigeon/Announcements")}>Announcements</button>
-        <button onClick={() => navigate("/Pigeon/Checklist")}>Checklist</button>
-        <button onClick={() => navigate("/Pigeon/Coocoo")}>Coocoo</button>
-        <button onClick={() => navigate("/Pigeon/Timetable")}>Timetable</button>
-        {isProf && <button onClick={() => navigate("/Pigeon/Professor")}>Professor</button>}
-        <button className="dashboard__btn" onClick={logout}>
-          Logout
-        </button>
+        <div className="grid">
+          <button className='navButton' onClick={() => navigate("/Pigeon/Announcements")}>Announcements</button>
+          <button className='navButton' onClick={() => navigate("/Pigeon/Checklist")}>Checklist</button>
+          <button className='navButton' onClick={() => navigate("/Pigeon/Coocoo")}>Coocoo</button>
+          <button className='navButton' onClick={() => navigate("/Pigeon/Timetable")}>Timetable</button>
+        </div>
+        {isProf && <button className='navButton' onClick={() => navigate("/Pigeon/Professor")}>Professor</button>}
+        <button className="dashboard__btn" onClick={logout}>Logout</button>
       </div>
     </div>
   );
