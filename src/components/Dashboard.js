@@ -33,8 +33,6 @@ function Dashboard() {
     fetchUserName();
   }, [user, loading]);
 
-  console.log(isProf)
-
   return (
     <div className="dashboard">
       <Clock />
