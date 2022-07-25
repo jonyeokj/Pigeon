@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import { auth, db, logout } from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import { Clock } from './Clock/Clock';
+import { Clock } from "./Clock/Clock";
+
+import Logo from "../img/PigeonLogo.png";
 
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
@@ -35,20 +37,44 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <Clock />
-      <div className="logginInfo">
-        Welcome!
-        <div>{name}</div>
-      </div>
+      <img className="logo" src={Logo} />
+      <div className="logginInfo">{`Welcome, ${name}!`}</div>
+      {/* <Clock /> */}
       <div className="dashboard__container">
-        <div></div>
         <div className="grid">
-          <button className='navButton' onClick={() => navigate("/Pigeon/Announcements")}>Announcements</button>
-          <button className='navButton' onClick={() => navigate("/Pigeon/Checklist")}>Checklist</button>
-          <button className='navButton' onClick={() => navigate("/Pigeon/Coocoo")}>Coocoo</button>
-          <button className='navButton' onClick={() => navigate("/Pigeon/Timetable")}>Timetable</button>
+          <button
+            className="navButton"
+            onClick={() => navigate("/Pigeon/Announcements")}
+          >
+            Announcements
+          </button>
+          <button
+            className="navButton"
+            onClick={() => navigate("/Pigeon/Checklist")}
+          >
+            Checklist
+          </button>
+          <button
+            className="navButton"
+            onClick={() => navigate("/Pigeon/Coocoo")}
+          >
+            Coocoo
+          </button>
+          <button
+            className="navButton"
+            onClick={() => navigate("/Pigeon/Timetable")}
+          >
+            Timetable
+          </button>
         </div>
-        {isProf && <button className='navButton' onClick={() => navigate("/Pigeon/Professor")}>Professor</button>}
+        {isProf && (
+          <button
+            className="navButton"
+            onClick={() => navigate("/Pigeon/Professor")}
+          >
+            Professor
+          </button>
+        )}
       </div>
     </div>
   );

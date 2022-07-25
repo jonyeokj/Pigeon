@@ -18,40 +18,48 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  border: 3px solid black;
-  background-color: #002855;
+  border: 3px solid white;
+  background-color: #112d4d;
   padding: 30px;
   width: 50%;
-  border-radius: 12%;
+  border-radius: 30px;
 }
 
 .logginInfo {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
   margin-bottom: 10px;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: xx-large;
+  font-size: 100px;
+  font-weight: 600;
 }
 
-.grid{
+.logo {
+  height: 200px;
+}
+
+.nameText {
+  text-align: right;
+}
+
+.grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
 }
 
 .navButton {
-  font-family: cursive;
   font-weight: 600;
   border-radius: 12px;
   height: 80px;
   padding: 10px;
-  font-size: 18px;
+  font-size: 30px;
   margin-top: 10px;
   border: 5px solid #168aad;
   color: white;
-  background-color: #023E7D;
+  background-color: #023e7d;
   margin: 10px;
 }
 
@@ -77,7 +85,7 @@ body {
 }
 
 .clock {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   margin: 10px;
   border-radius: 10px;
   background: #0d1621;
@@ -124,7 +132,7 @@ body {
 .digital {
   display: inline-block;
   position: relative;
-  font-family: 'Digital-7';
+  font-family: "Digital-7";
 }
 
 .digital :first-child {
@@ -144,7 +152,7 @@ body {
 
 button {
   font-size: 1.2rem;
-  border-radius:5px;
+  border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -160,8 +168,8 @@ button {
 }
 
 @media (max-width: 770px) {
-
-  .calendar, .ampm {
+  .calendar,
+  .ampm {
     font-size: 0.7rem;
   }
 
@@ -176,5 +184,4 @@ button {
   .countdown {
     font-size: 4rem;
   }
-  
 }

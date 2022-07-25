@@ -76,7 +76,7 @@ const Coocoo = () => {
             className="link">
             {Object.keys(links[idx]).map((key) => (
               <Typography variant="subtitle1">
-                <a href={`https://${links[idx][key]}`} rel="noreferrer">
+                <a href={`${links[idx][key]}`} rel="noreferrer" className="linkText">
                   {`${key}`}
                 </a>
               </Typography>

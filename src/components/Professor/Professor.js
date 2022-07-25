@@ -3,9 +3,16 @@ import { TextField, Button } from "@material-ui/core";
 import "./Professor.css";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useModal } from 'react-hooks-use-modal';
+import { useModal } from "react-hooks-use-modal";
 import { auth, db } from "../../firebase";
-import { query, doc, collection, updateDoc, getDocs, where } from "firebase/firestore";
+import {
+  query,
+  doc,
+  collection,
+  updateDoc,
+  getDocs,
+  where,
+} from "firebase/firestore";
 
 const Professor = () => {
   const [user, loading] = useAuthState(auth);
@@ -13,8 +20,8 @@ const Professor = () => {
   const [isProf, setProf] = useState(true);
   const [links, setLinks] = useState([]);
   const [announcements, setAnnouncements] = useState([]);
-  const [inputMod, setinputMod] = useState('')
-  const [currMod, setCurrMod] = useState('');
+  const [inputMod, setinputMod] = useState("");
+  const [currMod, setCurrMod] = useState("");
 
   // Announcements Variables
   const [addAnnInputs, setAddAnnInputs] = useState({});
@@ -24,13 +31,13 @@ const Professor = () => {
   const [addCooInputs, setAddCooInputs] = useState({});
   const [delCooInputs, setDelCooInputs] = useState({});
 
-  const [AnnModal, openAnn, closeAnn] = useModal('root', {
+  const [AnnModal, openAnn, closeAnn] = useModal("root", {
     preventScroll: true,
-    closeOnOverlayClick: false
+    closeOnOverlayClick: false,
   });
-  const [CooModal, openCoo, closeCoo] = useModal('root', {
+  const [CooModal, openCoo, closeCoo] = useModal("root", {
     preventScroll: true,
-    closeOnOverlayClick: false
+    closeOnOverlayClick: false,
   });
   const navigate = useNavigate();
 
@@ -49,7 +56,7 @@ const Professor = () => {
 
   const fetchModules = async () => {
     try {
-      const q = query(collection(db, "modules"))
+      const q = query(collection(db, "modules"));
       const doc = await getDocs(q);
       const data = doc.docs.map((code) => code.data().code);
 
@@ -65,8 +72,8 @@ const Professor = () => {
       const q = query(collection(db, "modules"), where("code", "==", currMod));
       const doc = await getDocs(q);
       const linkList = doc.docs.map((url) => url.data().url);
-      
-      console.log(linkList[0])
+
+      console.log(linkList[0]);
       setLinks(linkList[0]);
     } catch (err) {
       console.error(err);
@@ -92,76 +99,76 @@ const Professor = () => {
   const currModHandleSubmit = async (e) => {
     e.preventDefault();
 
-    if (inputMod === '') {
-      alert("Invalid Module Field")
+    if (inputMod === "") {
+      alert("Invalid Module Field");
     } else if (!mods.includes(inputMod)) {
-      alert("Module does not exist.")
+      alert("Module does not exist.");
     } else {
-      setCurrMod(inputMod.toLowerCase())
+      setCurrMod(inputMod.toLowerCase());
     }
-  }
+  };
 
   const currModHandleReset = async (e) => {
     e.preventDefault();
 
-    setCurrMod('');
-    setinputMod('');
+    setCurrMod("");
+    setinputMod("");
     setAnnouncements([]);
     setLinks([]);
-  }
+  };
 
   const addAnnHandleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setAddAnnInputs(values => ({...values, [name]: value}))
-  }
+    setAddAnnInputs((values) => ({ ...values, [name]: value }));
+  };
 
   const delAnnHandleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setDelAnnInputs(values => ({...values, [name]: value}))
-  }
-  
-  const addAnnouncement = async (e) => {
+    setDelAnnInputs((values) => ({ ...values, [name]: value }));
+  };
 
+  const addAnnouncement = async (e) => {
     e.preventDefault();
 
     try {
       const q = query(collection(db, "modules"), where("code", "==", currMod));
       const fetchDocs = await getDocs(q);
       const tempDic = fetchDocs.docs[0].data();
-      tempDic["announcements"][addAnnInputs["title"]] = addAnnInputs["desc"]
+      tempDic["announcements"][addAnnInputs["title"]] = addAnnInputs["desc"];
       const codeDocRef = doc(db, "modules", currMod);
       await updateDoc(codeDocRef, {
-        announcements : tempDic["announcements"]
+        announcements: tempDic["announcements"],
       });
       alert("Announcement uploaded successfully!");
+      fetchAnn();
       closeAnn();
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
     }
 
-    setAddAnnInputs({})
+    setAddAnnInputs({});
   };
-  
-  const delAnnouncement = async (e) => {
 
+  const delAnnouncement = async (e) => {
     e.preventDefault();
 
     try {
       const q = query(collection(db, "modules"), where("code", "==", currMod));
       const fetchDocs = await getDocs(q);
       const tempDic = fetchDocs.docs[0].data();
-      if (!(delAnnInputs["title"] in tempDic["announcements"])){
+      if (!(delAnnInputs["title"] in tempDic["announcements"])) {
         alert("Announcement does not exist.");
       } else {
-        delete tempDic["announcements"][delAnnInputs["title"]]
+        delete tempDic["announcements"][delAnnInputs["title"]];
         const codeDocRef = doc(db, "modules", currMod);
         await updateDoc(codeDocRef, {
-          announcements : tempDic["announcements"]
+          announcements: tempDic["announcements"],
         });
         alert("Announcement deleted successfully!");
+        fetchAnn();
         closeAnn();
       }
     } catch (err) {
@@ -169,70 +176,70 @@ const Professor = () => {
       alert("An error occured while fetching user data");
     }
 
-    setDelAnnInputs({})
+    setDelAnnInputs({});
   };
 
   const addCooHandleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setAddCooInputs(values => ({...values, [name]: value}))
-  }
+    setAddCooInputs((values) => ({ ...values, [name]: value }));
+  };
 
   const delCooHandleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setDelCooInputs(values => ({...values, [name]: value}))
-  }
+    setDelCooInputs((values) => ({ ...values, [name]: value }));
+  };
 
   const addCoocoo = async (e) => {
-
     e.preventDefault();
 
     try {
       const q = query(collection(db, "modules"), where("code", "==", currMod));
       const fetchDocs = await getDocs(q);
       const tempDic = fetchDocs.docs[0].data();
-      tempDic["url"][addCooInputs["desc"]] = addCooInputs["link"]
-      console.log(tempDic)
+      tempDic["url"][addCooInputs["desc"]] = addCooInputs["link"];
+      console.log(tempDic);
       const codeDocRef = doc(db, "modules", currMod);
       await updateDoc(codeDocRef, {
-        url : tempDic["url"]
+        url: tempDic["url"],
       });
       alert("Coocoo uploaded successfully!");
-      closeCoo()
+      fetchLinks();
+      closeCoo();
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
     }
 
-    setAddCooInputs({})
+    setAddCooInputs({});
   };
 
   const delCoocoo = async (e) => {
-
     e.preventDefault();
 
     try {
       const q = query(collection(db, "modules"), where("code", "==", currMod));
       const fetchDocs = await getDocs(q);
       const tempDic = fetchDocs.docs[0].data();
-      if (!(delCooInputs["desc"] in tempDic["url"])){
+      if (!(delCooInputs["desc"] in tempDic["url"])) {
         alert("Coocoo does not exist.");
       } else {
-        delete tempDic["url"][delCooInputs["desc"]]
+        delete tempDic["url"][delCooInputs["desc"]];
         const codeDocRef = doc(db, "modules", currMod);
         await updateDoc(codeDocRef, {
-          url : tempDic["url"]
+          url: tempDic["url"],
         });
         alert("Coocoo deleted successfully!");
-        closeCoo()
+        fetchLinks();
+        closeCoo();
       }
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
     }
 
-    setDelCooInputs({})
+    setDelCooInputs({});
   };
 
   useEffect(() => {
@@ -243,13 +250,12 @@ const Professor = () => {
   }, [user, loading]);
 
   useEffect(() => {
-    if (!isProf) 
-    alert("You do not have the permissions to access this page.");
+    if (!isProf) alert("You do not have the permissions to access this page.");
     if (!isProf) return navigate("/Pigeon/Dashboard");
   }, [isProf]);
 
   useEffect(() => {
-    if (!(currMod == '')) {
+    if (!(currMod == "")) {
       fetchAnn();
       fetchLinks();
     }
@@ -261,13 +267,14 @@ const Professor = () => {
 
       <div className="profTitle">
         List of Modules
-        {mods.map(mod => 
-          <div>{mod}</div>)}
+        {mods.map((mod) => (
+          <div className="displayMod">{mod}</div>
+        ))}
       </div>
 
-      <div>
+      <div className="announcementWrapper">
         {Object.keys(announcements).map((key) => (
-          <div>
+          <div className="announcementItemWrapper">
             <h3>{`${key}`}</h3>
             <div>{`${announcements[key]}`}</div>
           </div>
@@ -276,73 +283,136 @@ const Professor = () => {
 
       <div>
         {Object.keys(links).map((key) => (
-          <div>
+          <div className="linkItemWrapper">
             <h3>{`${key}`}</h3>
-            <div>{`${links[key]}`}</div>
+            <a href={links[key]}>{`${links[key]}`}</a>
           </div>
         ))}
       </div>
 
       <div className="formWrap">
         <div className="selectMod">
-          {(currMod === '') ? ("Please Select a Module") : currMod}
+          {currMod === ""
+            ? "Please Select a Module:"
+            : `Selected Module: ${currMod.toUpperCase()}`}
         </div>
-        <form>
-          <TextField label='Code' value={inputMod || ""} name='icode'
-            onChange={(e) => setinputMod(e.target.value)} />
-          <Button variant='contained' color='primary' onClick={currModHandleSubmit} >
+        <div className="moduleSelectField">
+          <TextField
+            id="filled-basic"
+            label="Module Code"
+            value={inputMod || ""}
+            name="icode"
+            onChange={(e) => setinputMod(e.target.value)}
+            variant="filled"
+            className="selectModInputField"
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={currModHandleSubmit}
+          >
             Select
           </Button>
-          <Button variant='contained' color='primary' onClick={currModHandleReset} >
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={currModHandleReset}
+          >
             Reset
           </Button>
-        </form>
-        <button onClick={openAnn}>Add Announcement</button>
+        </div>
+        <button
+          className="addAnnouncementButton"
+          disabled={currMod == ""}
+          onClick={openAnn}
+        >
+          Add Announcement
+        </button>
         <AnnModal>
           <div className="announWrap">
-            <form>
-              <TextField label='Title' value={addAnnInputs.title || ""} name='title'
-                onChange={addAnnHandleChange} />
-              <TextField label='Desc' value={addAnnInputs.desc || ""} name='desc'
-                onChange={addAnnHandleChange} />
-              <Button variant='contained' color='primary' onClick={addAnnouncement} >
+            <div className="addAnnouncementWrapper">
+              <TextField
+                label="Title"
+                value={addAnnInputs.title || ""}
+                name="title"
+                onChange={addAnnHandleChange}
+              />
+              <TextField
+                label="Desc"
+                value={addAnnInputs.desc || ""}
+                name="desc"
+                onChange={addAnnHandleChange}
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={addAnnouncement}
+              >
                 Add Announcement
               </Button>
-            </form>
-            <form>
-              <TextField label='Title' value={delAnnInputs.title || ""} name='title'
-                onChange={delAnnHandleChange} />
-              <Button variant='contained' color='primary' onClick={delAnnouncement} >
+            </div>
+            <div className="delAnnouncementWrapper">
+              <TextField
+                label="Title"
+                value={delAnnInputs.title || ""}
+                name="title"
+                onChange={delAnnHandleChange}
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={delAnnouncement}
+              >
                 Delete Announcement
               </Button>
-            </form>
+            </div>
             <div>
-              <button onClick={closeAnn}>CLOSE</button>
+              <Button color="primary" variant="contained" onClick={closeAnn}>
+                CLOSE
+              </Button>
             </div>
           </div>
         </AnnModal>
       </div>
       <div>
-        <button onClick={openCoo}>Add Coocoo</button>
+        <button disabled={currMod == ""} onClick={openCoo}>
+          Add Coocoo
+        </button>
         <CooModal>
-          <form>
-            <TextField label='Description' value={addCooInputs.desc || ""} name='desc'
-              onChange={addCooHandleChange} />
-            <TextField label='Hyperlink' value={addCooInputs.link || ""} name='link'
-              onChange={addCooHandleChange} />
-            <Button variant='contained' color='primary' onClick={addCoocoo} >
-              Add Coocoo
-            </Button>
-          </form>
-          <form>
-            <TextField label='Description' value={delCooInputs.desc || ""} name='desc'
-              onChange={delCooHandleChange} />
-            <Button variant='contained' color='primary' onClick={delCoocoo} >
-              Delete Coocoo
-            </Button>
-          </form>
-          <div>
-              <button onClick={closeCoo}>CLOSE</button>
+          <div className="cocoWrapper">
+            <div className="addCocoWrapper">
+              <TextField
+                label="Description"
+                value={addCooInputs.desc || ""}
+                name="desc"
+                onChange={addCooHandleChange}
+              />
+              <TextField
+                label="Hyperlink"
+                value={addCooInputs.link || ""}
+                name="link"
+                onChange={addCooHandleChange}
+              />
+              <Button variant="contained" color="primary" onClick={addCoocoo}>
+                Add Coocoo
+              </Button>
+            </div>
+            <div className="delCocoWrapper">
+              <TextField
+                label="Description"
+                value={delCooInputs.desc || ""}
+                name="desc"
+                onChange={delCooHandleChange}
+              />
+              <Button variant="contained" color="primary" onClick={delCoocoo}>
+                Delete Coocoo
+              </Button>
+            </div>
+            <div>
+              <Button color="primary" variant="contained" onClick={closeCoo}>
+                CLOSE
+              </Button>
+            </div>
           </div>
         </CooModal>
       </div>
