@@ -8,16 +8,21 @@
   justify-content: center;
 }
 
-.timetable_title {
+.timetable_bar {
   margin-top: 0%;
   height: 80px;
   background-color: #4361ee;
   color: #caf0f8;
   text-align: left;
-  padding: 15px;
+  padding: 10px;
   padding-left: 120px;
-  
-  font-size: 50px;
+  width: 100%;
+}
+
+.timetable_title {
+
+  padding-top: 8px;
+  font-size: 42px;
   font-weight: 700;
   width: 100%;
 }

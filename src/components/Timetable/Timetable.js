@@ -29,8 +29,8 @@ const Timetable = () => {
 
   return (
     <div className='background'>
-      <div className='timetable_title'>
-        <h1> Timetable </h1>
+      <div className='timetable_bar'>
+        <h1 className = 'timetable_title'> Timetable </h1>
         <center>
           <div className='window'>
             <iframe src="https://nusmods.com/timetable/sem-1" scrolling='no' style={{height: 540, width: 1100}}></iframe>

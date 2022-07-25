@@ -38,7 +38,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <img className="logo" src={Logo} />
+      <img className="dashboardLogo" src={Logo} />
       <div className="logginInfo">{`Welcome, ${name}!`}</div>
       <div className="dashboard__container">
         <div className="grid">
