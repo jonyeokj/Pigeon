@@ -33,7 +33,7 @@ const Timetable = () => {
         <h1> Timetable </h1>
         <center>
           <div className='window'>
-            <iframe src="https://nusmods.com/timetable/sem-1" scrolling='no' style={{height: 500, width: 1100}}></iframe>
+            <iframe src="https://nusmods.com/timetable/sem-1" scrolling='no' style={{height: 540, width: 1100}}></iframe>
           </div>
         </center>
         <div className='buttons'>   

@@ -70,7 +70,7 @@ const Coocoo = () => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography variant="h4">{mod}</Typography>
+            <Typography variant="h4">{mod.toUpperCase()}</Typography>
           </AccordionSummary>
           <AccordionDetails
             className="link">

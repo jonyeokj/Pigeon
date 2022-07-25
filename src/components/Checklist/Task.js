@@ -26,7 +26,7 @@ const Task = ({arr}) => {
         <List className="todo__list">
             <ListItem className="task">
             <ListItemAvatar className="LIAvatar"/>
-            <ListItemText className="listItem" primary={arr.item.task} secondary={arr.id} />
+            <ListItemText className="listItem" primary={arr.item.task} />
             <Checkbox className='checkbox' checked={checked} onChange={handleClick} inputProps={{ 'aria-label': 'controlled' }} />
             <Delete fontSize="large" style={{opacity:0.7}} onClick={() => {deleteDoc(doc(db,'tasks',arr.id))}} />
             </ListItem>

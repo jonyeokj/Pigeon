@@ -101,7 +101,7 @@ const Professor = () => {
 
     if (inputMod === "") {
       alert("Invalid Module Field");
-    } else if (!mods.includes(inputMod)) {
+    } else if (!mods.includes(inputMod.toLowerCase())) {
       alert("Module does not exist.");
     } else {
       setCurrMod(inputMod.toLowerCase());
