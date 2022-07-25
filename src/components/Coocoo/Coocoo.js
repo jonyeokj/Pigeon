@@ -19,6 +19,7 @@ const Coocoo = () => {
   const [mods, setModules] = useState([]);
   const navigate = useNavigate();
 
+  // Fetching All Modules within Database
   const fetchModules = async () => {
     try {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
@@ -32,6 +33,7 @@ const Coocoo = () => {
     }
   };
 
+  // Fetching and storing Links and Modules that users has using the earlier fetched Modules
   const fetchLinks = async () => {
     try {
       const q = query(collection(db, "modules"), where("code", "in", tempMods));
@@ -47,12 +49,14 @@ const Coocoo = () => {
     }
   };
 
+  // When page is loaded, fetch temporary modules
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/Pigeon");
     fetchModules();
   }, [user, loading]);
 
+  // When temporary modules are loaded, fetch users' mods and corresponding links
   useEffect(() => {
     if (tempMods.length > 0) {
       fetchLinks();

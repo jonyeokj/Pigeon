@@ -1,3 +1,11 @@
+.logo {
+  height: 200px;
+  background-color: white;
+  padding: 50px;
+  justify-content: center;
+  border-radius: 50px;
+}
+
 .login {
   height: 100vh;
   width: 100vw;
@@ -12,6 +20,7 @@
   text-align: center;
   background-color: #dcdcdc;
   padding: 30px;
+  margin-left: 80px;
 }
 
 .login__textBox {

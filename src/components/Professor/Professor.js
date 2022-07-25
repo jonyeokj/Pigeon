@@ -31,6 +31,7 @@ const Professor = () => {
   const [addCooInputs, setAddCooInputs] = useState({});
   const [delCooInputs, setDelCooInputs] = useState({});
 
+  // Create Modals that open on button click, making page cleaner
   const [AnnModal, openAnn, closeAnn] = useModal("root", {
     preventScroll: true,
     closeOnOverlayClick: false,
@@ -41,6 +42,7 @@ const Professor = () => {
   });
   const navigate = useNavigate();
 
+  // Check whether user is an admin or not
   const fetchProf = async () => {
     try {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
@@ -54,6 +56,7 @@ const Professor = () => {
     }
   };
 
+  // Fetch all module data within the database
   const fetchModules = async () => {
     try {
       const q = query(collection(db, "modules"));
@@ -67,6 +70,7 @@ const Professor = () => {
     }
   };
 
+  // Fetch links of the mod when a current mod is selected
   const fetchLinks = async () => {
     try {
       const q = query(collection(db, "modules"), where("code", "==", currMod));
@@ -81,6 +85,7 @@ const Professor = () => {
     }
   };
 
+  // Fetch announcements of the mod when a current mod is selected
   const fetchAnn = async () => {
     try {
       const q = query(collection(db, "modules"), where("code", "==", currMod));
@@ -96,6 +101,7 @@ const Professor = () => {
     }
   };
 
+  // Handle exceptions and if successful, set the current mod when the button in the form is pressed
   const currModHandleSubmit = async (e) => {
     e.preventDefault();
 
@@ -108,6 +114,7 @@ const Professor = () => {
     }
   };
 
+  // Reset Inputs (useState vars) and current module selected
   const currModHandleReset = async (e) => {
     e.preventDefault();
 
@@ -117,18 +124,21 @@ const Professor = () => {
     setLinks([]);
   };
 
+  // Store temporary variables into input before add announcement button is pressed
   const addAnnHandleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setAddAnnInputs((values) => ({ ...values, [name]: value }));
   };
 
+  // Store temporary variables into input before del announcement button is pressed
   const delAnnHandleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setDelAnnInputs((values) => ({ ...values, [name]: value }));
   };
 
+  // Handle exceptions and add announcement to database on button click
   const addAnnouncement = async (e) => {
     e.preventDefault();
 
@@ -152,6 +162,7 @@ const Professor = () => {
     setAddAnnInputs({});
   };
 
+  // Handle exceptions and del announcement to database on button click
   const delAnnouncement = async (e) => {
     e.preventDefault();
 
@@ -179,18 +190,21 @@ const Professor = () => {
     setDelAnnInputs({});
   };
 
+  // Store temporary variables into input before add link button is pressed
   const addCooHandleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setAddCooInputs((values) => ({ ...values, [name]: value }));
   };
 
+  // Store temporary variables into input before del link button is pressed
   const delCooHandleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setDelCooInputs((values) => ({ ...values, [name]: value }));
   };
 
+  // Handle exceptions and add link to database on button click
   const addCoocoo = async (e) => {
     e.preventDefault();
 
@@ -215,6 +229,7 @@ const Professor = () => {
     setAddCooInputs({});
   };
 
+  // Handle exceptions and del link to database on button click
   const delCoocoo = async (e) => {
     e.preventDefault();
 
@@ -242,6 +257,7 @@ const Professor = () => {
     setDelCooInputs({});
   };
 
+  // When page is loaded, fetch modules and user permission
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/Pigeon");
@@ -249,11 +265,13 @@ const Professor = () => {
     fetchModules();
   }, [user, loading]);
 
+  // Check user permission, if not admin they will not be allowed access
   useEffect(() => {
     if (!isProf) alert("You do not have the permissions to access this page.");
     if (!isProf) return navigate("/Pigeon/Dashboard");
   }, [isProf]);
 
+  // When current mod changes, fetch announcements and links to display to user
   useEffect(() => {
     if (!(currMod == "")) {
       fetchAnn();

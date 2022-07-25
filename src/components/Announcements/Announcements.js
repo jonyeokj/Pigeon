@@ -14,6 +14,7 @@ const Announcements = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
   const navigate = useNavigate();
 
+  // Fetching All Modules within Database
   const fetchModules = async () => {
     try {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
@@ -27,6 +28,7 @@ const Announcements = () => {
     }
   };
 
+  // Fetching and storing Announcements and Modules that users has using the earlier fetched Modules
   const fetchAnnouncements = async () => {
     try {
       const q = query(collection(db, "modules"), where("code", "in", tempMods));
@@ -45,12 +47,14 @@ const Announcements = () => {
     }
   };
 
+  // When page is loaded, fetch temporary modules
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/Pigeon");
     fetchModules();
   }, [user, loading]);
 
+  // When temporary modules are loaded, fetch users' mods and corresponding announcements
   useEffect(() => {
     if (tempMods.length > 0) {
       fetchAnnouncements();

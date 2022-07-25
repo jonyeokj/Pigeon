@@ -15,6 +15,7 @@ const Checklist = () => {
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState('');
 
+  // Ensure Page is updated everytime there is a new task added
   useEffect(() => {
     onSnapshot(q, (snapshot) => {
       setTasks(snapshot.docs.map(doc=>({
@@ -25,6 +26,7 @@ const Checklist = () => {
   },[input]
   );
   
+  // Add task to the database on button click in the form
   const addTask = (e) => {
     e.preventDefault();
     if (input != '') {

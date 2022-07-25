@@ -1,22 +1,16 @@
 {
   "files": {
-    "main.css": "/Pigeon/static/css/main.edd46ee0.chunk.css",
-    "main.js": "/Pigeon/static/js/main.887c7c85.chunk.js",
-    "main.js.map": "/Pigeon/static/js/main.887c7c85.chunk.js.map",
-    "runtime-main.js": "/Pigeon/static/js/runtime-main.e48910dd.js",
-    "runtime-main.js.map": "/Pigeon/static/js/runtime-main.e48910dd.js.map",
-    "static/js/2.eeabc6e2.chunk.js": "/Pigeon/static/js/2.eeabc6e2.chunk.js",
-    "static/js/2.eeabc6e2.chunk.js.map": "/Pigeon/static/js/2.eeabc6e2.chunk.js.map",
-    "static/js/3.af9adab0.chunk.js": "/Pigeon/static/js/3.af9adab0.chunk.js",
-    "static/js/3.af9adab0.chunk.js.map": "/Pigeon/static/js/3.af9adab0.chunk.js.map",
+    "main.css": "/Pigeon/static/css/main.66b2926f.css",
+    "main.js": "/Pigeon/static/js/main.b4a90eaf.js",
+    "static/js/787.27a2ab5e.chunk.js": "/Pigeon/static/js/787.27a2ab5e.chunk.js",
+    "static/media/PigeonLogo.png": "/Pigeon/static/media/PigeonLogo.65ea99c14610c77c2ac9.png",
     "index.html": "/Pigeon/index.html",
-    "static/css/main.edd46ee0.chunk.css.map": "/Pigeon/static/css/main.edd46ee0.chunk.css.map",
-    "static/js/2.eeabc6e2.chunk.js.LICENSE.txt": "/Pigeon/static/js/2.eeabc6e2.chunk.js.LICENSE.txt"
+    "main.66b2926f.css.map": "/Pigeon/static/css/main.66b2926f.css.map",
+    "main.b4a90eaf.js.map": "/Pigeon/static/js/main.b4a90eaf.js.map",
+    "787.27a2ab5e.chunk.js.map": "/Pigeon/static/js/787.27a2ab5e.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.e48910dd.js",
-    "static/js/2.eeabc6e2.chunk.js",
-    "static/css/main.edd46ee0.chunk.css",
-    "static/js/main.887c7c85.chunk.js"
+    "static/css/main.66b2926f.css",
+    "static/js/main.b4a90eaf.js"
   ]
 }

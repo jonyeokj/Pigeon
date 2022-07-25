@@ -19,6 +19,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const [isProf, setProf] = useState(false);
 
+  // Fetch user permissions, to decide whether or not to display professor page
   const fetchProf = async () => {
     try {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
@@ -32,15 +33,18 @@ const Sidebar = () => {
     }
   };
 
+  // Logout and redirect to login page upon button press
   const handleLogout = async () => {
     navigate("/Pigeon")
     logout();
   };
 
+  // Collapse menu upon button press
   const onClickMenuIcon = () => {
     setCollapsed(!collapsed);
   };
 
+  // When page is loaded, fetch user data
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/Pigeon");

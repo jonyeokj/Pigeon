@@ -1,3 +1,8 @@
+body, html {
+  background-color: #001233;
+  height: 100vh;
+}
+
 .wrapper {
   background-color: #001233;
   height: 100vh;

@@ -4,6 +4,8 @@ import { auth, logInWithEmailAndPassword, signInWithGoogle } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Login.css";
 
+import Logo from "./img/PigeonLogo.png";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,6 +22,7 @@ function Login() {
 
   return (
     <div className="login">
+      <img className="logo" src={Logo} />
       <div className="login__container">
         <input
           type="text"
