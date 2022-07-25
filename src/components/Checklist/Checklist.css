@@ -1,13 +1,40 @@
-/* .text {
-  text-align: center;
-  color: red;
+.background {
+  background-image: url("https://kiddieroundupcdc.com/wp-content/uploads/2016/06/blue-sky.jpg");
+  background-size: "cover";
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
 }
 
-.checklistWrapper {
+.checklist_wrapper {
   display: flex;
   flex-direction: column;
-} */
-.checklist {
-  display:grid;
-  place-items:center;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin-top: 0%;
+  height: 60px;
+  background-color: #4361ee;
+  color: #caf0f8;
+  text-align: left;
+  padding: 15px;
+  
+  font-size: 50px;
+  font-weight: 700;
+  width: 100%;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.backButton {
+  width: 100px;
+  background-color: #3f51b5;
 }

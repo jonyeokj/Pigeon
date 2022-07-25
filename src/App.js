@@ -13,6 +13,8 @@ import Professor from "./components/Professor";
 
 function App() {
 
+  const activeMenu = true;
+  
   return (
     <div className="app">
       <Router>

@@ -27,17 +27,19 @@ const Timetable = () => {
   }, [user, loading]);
 
   return (
-    <div className='text'>
-      <h1> Timetable </h1>
-      <center>
-        <div classname='window'>
-          <iframe src="https://nusmods.com/timetable/sem-1" scrolling='no' style={{height: 550, width: 1100}}></iframe>
-        </div>
-      </center>
-      <div>
-        <button onClick={() => navigate("/Pigeon/Dashboard")}>Back</button>
+    <div className='background'>
+      <div className='text'>
+        <h1> Timetable </h1>
+        <center>
+          <div classname='window'>
+            <iframe src="https://nusmods.com/timetable/sem-1" scrolling='no' style={{height: 550, width: 1100}}></iframe>
+          </div>
+        </center>
+        <div>
+          <button onClick={() => navigate("/Pigeon/Dashboard")}>Back</button>
+        </div> 
       </div> 
-    </div> 
+    </div>
   );
 };
 
