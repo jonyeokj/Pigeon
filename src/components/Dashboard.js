@@ -49,7 +49,6 @@ function Dashboard() {
           <button className='navButton' onClick={() => navigate("/Pigeon/Timetable")}>Timetable</button>
         </div>
         {isProf && <button className='navButton' onClick={() => navigate("/Pigeon/Professor")}>Professor</button>}
-        <button className="dashboard__btn" onClick={logout}>Logout</button>
       </div>
     </div>
   );

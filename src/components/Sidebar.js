@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { AiOutlineMenu, AiFillHome } from "react-icons/ai";
+import { AiOutlineMenu} from "react-icons/ai";
 import { BsFillMegaphoneFill, BsListCheck, BsLink45Deg, BsTable } from "react-icons/bs";
 import { FaChalkboardTeacher, FaEarlybirds } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi"
 import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import { Menu, MenuItem, ProSidebar, SidebarHeader, SubMenu } from "react-pro-sidebar";
+import { Menu, MenuItem, ProSidebar, SidebarHeader, SidebarFooter } from "react-pro-sidebar";
+import "./Sidebar.css"
 import "react-pro-sidebar/dist/css/styles.css";
 import { Link } from "react-router-dom";
 
 
 const Sidebar = () => {
   const [user, loading] = useAuthState(auth);
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const navigate = useNavigate();
   const [isProf, setProf] = useState(false);
 
@@ -30,14 +32,9 @@ const Sidebar = () => {
     }
   };
 
-  const styles = {
-    sideBarHeight: {
-      height: "100vh",
-    },
-    menuIcon: {
-      float: "right",
-      margin: "10px",
-    },
+  const handleLogout = async () => {
+    navigate("/Pigeon")
+    logout();
   };
 
   const onClickMenuIcon = () => {
@@ -51,15 +48,17 @@ const Sidebar = () => {
   }, [user, loading]);
 
   return (
-    <ProSidebar style={styles.sideBarHeight} collapsed={collapsed}>
+    <div className="sidebar">
+    <ProSidebar collapsed={collapsed}>
       <SidebarHeader>
-        <div style={styles.menuIcon} onClick={onClickMenuIcon}>
+        <div className="menuIcon" onClick={onClickMenuIcon}>
           <AiOutlineMenu />
         </div>
-        <div className="Home" style={styles.menuIcon} 
-          onClick={() => navigate("/Pigeon/Dashboard")}>
-          <FaEarlybirds />
-          {collapsed ? '' : 'Pigeon'}
+        <div className="pigeonWrapper">
+          <div className="pigeonIcon" onClick={() => navigate("/Pigeon/Dashboard")}>
+            <FaEarlybirds />
+            {collapsed ? '' : <div className="pigeonHome">Pigeon</div>}
+          </div>
         </div>
       </SidebarHeader>
       <Menu iconShape="square">
@@ -74,7 +73,14 @@ const Sidebar = () => {
         {isProf && <MenuItem onClick={() => navigate("/Pigeon/Professor")}
           icon={<FaChalkboardTeacher />}> Professor</MenuItem>}
       </Menu>
+      <SidebarFooter>
+        <Menu iconShape="square">
+          <MenuItem onClick={handleLogout}
+            icon={<FiLogOut />}>Logout</MenuItem>
+        </Menu>
+      </SidebarFooter>
     </ProSidebar>
+    </div>
   );
 };
 export default Sidebar;
