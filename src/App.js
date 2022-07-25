@@ -10,7 +10,6 @@ import Checklist from "./components/Checklist";
 import Coocoo from "./components/Coocoo";
 import Timetable from "./components/Timetable";
 import Professor from "./components/Professor";
-import Sidebar from "./components/Sidebar";
 
 function App() {
 
@@ -19,15 +18,6 @@ function App() {
   return (
     <div className="app">
       <Router>
-      {activeMenu ? (
-            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
-              <Sidebar />
-            </div>
-          ) : (
-            <div className="w-0 dark:bg-secondary-dark-bg">
-              <Sidebar />
-            </div>
-          )}
         <Routes>
           <Route exact path="/Pigeon" element={<Login />} />
           <Route exact path="/Pigeon/register" element={<Register />} />
