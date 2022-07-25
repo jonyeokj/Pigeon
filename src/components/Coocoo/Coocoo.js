@@ -10,6 +10,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Button from '@mui/material/Button';
 
 const Coocoo = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -69,12 +70,12 @@ const Coocoo = () => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography>{mod}</Typography>
+            <Typography variant="h4">{mod}</Typography>
           </AccordionSummary>
           <AccordionDetails
             className="link">
             {Object.keys(links[idx]).map((key) => (
-              <Typography>
+              <Typography variant="subtitle1">
                 <a href={`https://${links[idx][key]}`} rel="noreferrer">
                   {`${key}`}
                 </a>
@@ -83,7 +84,7 @@ const Coocoo = () => {
           </AccordionDetails>
         </Accordion>
       ))}
-      <button onClick={() => navigate("/Pigeon/Dashboard")}> Back</button>
+      <Button className="backButton" variant="contained" color="primary" onClick={() => navigate("/Pigeon/Dashboard")}> Back</Button>
     </div>
   );
 };

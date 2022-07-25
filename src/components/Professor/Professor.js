@@ -97,7 +97,7 @@ const Professor = () => {
     } else if (!mods.includes(inputMod)) {
       alert("Module does not exist.")
     } else {
-      setCurrMod(inputMod)
+      setCurrMod(inputMod.toLowerCase())
     }
   }
 
@@ -259,7 +259,7 @@ const Professor = () => {
     <div className="background">
       <div className="header">Professor</div>
 
-      <div className="title">
+      <div className="profTitle">
         List of Modules
         {mods.map(mod => 
           <div>{mod}</div>)}

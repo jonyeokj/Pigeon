@@ -29,7 +29,7 @@ const Timetable = () => {
 
   return (
     <div className='background'>
-      <div className='title'>
+      <div className='timetable_title'>
         <h1> Timetable </h1>
         <center>
           <div className='window'>

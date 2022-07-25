@@ -41,10 +41,10 @@ const Checklist = () => {
   return (
     <div className="background">
       <div className="checklist_wrapper">
-        <h2 className="title"> Checklist </h2>
+        <h2 className="checklist_title"> Checklist </h2>
         <form>
           <TextField className="input" id='outlined-basic' label='Task' variant='outlined'
-          style={{margin:'0px 5px'}} size='small' value={input} 
+          style={{margin:'0px 10px'}} size='small' value={input} 
           onChange={e=>setInput(e.target.value)} />
           <Button variant='contained' color='primary' onClick={addTask} >
             Add Task

@@ -16,12 +16,11 @@
   width: 100vw;
 }
 
-.title {
+.profTitle {
   text-align: center;
   color: red;
   font-size: medium;
   background-color: #0466C8;
-  height: 50vh;
 }
 
 .formWrap {
